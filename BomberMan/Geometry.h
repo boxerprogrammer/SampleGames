@@ -98,6 +98,7 @@ struct Rect {
 	float Bottom()const;
 	Rect() {};
 	Rect(const Position2& c, const Size& sz);
+	void SetLTRB(float l, float t, float r, float b);
 	/// <summary>
 	/// デバッグ用矩形表示
 	/// </summary>

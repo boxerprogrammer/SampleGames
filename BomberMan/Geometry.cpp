@@ -110,6 +110,14 @@ Rect::Rect(const Position2& c, const Size& sz)
 	size = sz;
 }
 
+void Rect::SetLTRB(float l, float t, float r, float b)
+{
+	center.x = (r + l) / 2;
+	center.y = (b + t) / 2;
+	size.w = static_cast<int>(r - l);
+	size.h = static_cast<int>(b - t);
+}
+
 void Rect::Draw(unsigned int col)const
 {
 	DrawBoxAA(Left(),  

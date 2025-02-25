@@ -3,8 +3,16 @@
 class Bomb :
     public Actor
 {
+	int power_ = 2;
 	int handle_=0;
 	int animFrame_=0;
+	using UpdateFunc_t = void (Bomb::*)();
+
+	UpdateFunc_t update_;
+
+	void WaitUpdate();
+	void BurstUpdate();
+
 public:
 	Bomb(GameScene& gameScene, const Position2& pos);
 	/// <summary>

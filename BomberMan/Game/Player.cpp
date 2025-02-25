@@ -196,7 +196,7 @@ void Player::OnHitBlock(const Collision& coll)
 void Player::SetBomb(Input& input)
 {
 	if (input.IsTrigger("action")) {
-		gameScene_.SetBomb(pos_);
+		gameScene_.SetBomb(collision_.GetRect().center);
 	}
 	
 }

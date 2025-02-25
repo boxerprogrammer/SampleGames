@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Blast.cpp" />
     <ClCompile Include="Game\Bomb.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\Collision.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Game\UnbreakableBlock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Blast.h" />
     <ClInclude Include="Game\Bomb.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\Collision.h" />

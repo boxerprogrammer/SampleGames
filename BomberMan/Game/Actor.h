@@ -11,6 +11,7 @@ protected:
 	GameScene& gameScene_;//持ち主であるゲームシーンの参照を持つ
 	Position2 pos_;//アクターの現在座標(中心点とする)
 	Collision collision_;
+	bool isDead_ = false;//死亡フラグ
 public:
 	Actor(GameScene&);
 	virtual ~Actor() {}
@@ -34,6 +35,7 @@ public:
 	virtual void OnHit(const Collision& collision) = 0;
 
 	const Collision& GetCollision()const;
+	bool IsDead()const;
 
 };
 

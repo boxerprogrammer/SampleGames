@@ -10,8 +10,9 @@
 #include"../Game/UnbreakableBlock.h"
 #include"../Game/Enemy.h"
 #include"../Game/Bomb.h"
+#include"../Game/Blast.h"
 #include<cmath>
-
+#include<iterator>
 
 namespace {
 	constexpr int fade_interval = 60;
@@ -39,10 +40,16 @@ void GameScene::NormalUpdate(Input& input)
 	if (input.IsTrigger("pause")) {
 		controller_.PushScene(std::make_shared<PauseScene>(controller_));
 	}
-	for (auto actor : actors_) {
+	for (auto& actor : actors_) {
 		actor->Update(input);
 	}
 	CheckHit();
+	std::copy(additionalActors_.begin(),additionalActors_.end(),std::back_inserter(actors_));
+	additionalActors_.clear();
+	auto remIt = std::remove_if(actors_.begin(), actors_.end(), [](const std::shared_ptr<Actor>& actor) {
+		return actor->IsDead();
+		});
+	actors_.erase(remIt, actors_.end());
 }
 
 void GameScene::FadeOutUpdate(Input& input)
@@ -59,7 +66,7 @@ void GameScene::FadeOutUpdate(Input& input)
 void GameScene::FadeDraw()
 {
 	DrawGround();
-	for (auto actor : actors_) {
+	for (auto& actor : actors_) {
 		actor->Draw();
 	}
 	const Size& wsize = Application::GetInstance().GetWindowSize();
@@ -74,7 +81,7 @@ void GameScene::NormalDraw()
 	DrawString(10, 10, L"Game Play Scene", 0xffffff);
 
 	DrawGround();
-	for (auto actor : actors_) {
+	for (auto& actor : actors_) {
 		actor->Draw();
 	}
 	
@@ -168,5 +175,16 @@ void GameScene::Draw()
 
 void GameScene::SetBomb(const Position2& pos)
 {
-	actors_.push_back(std::make_shared<Bomb>(*this, pos));
+	additionalActors_.push_back(std::make_shared<Bomb>(*this, pos));
 }
+
+void GameScene::SetBlastH(const Position2& pos, int power)
+{
+	additionalActors_.push_back(std::make_shared<Blast>(*this, pos, BlastDirection::Horizontal, power));
+}
+
+void GameScene::SetBlastV(const Position2& pos, int power)
+{
+	additionalActors_.push_back(std::make_shared<Blast>(*this, pos, BlastDirection::Vertical, power));
+}
+

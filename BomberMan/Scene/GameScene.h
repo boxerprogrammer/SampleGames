@@ -26,6 +26,7 @@ private:
 
 	//ゲーム中の登場人物(配置可能オブジェクト)
 	std::vector<std::shared_ptr<Actor>> actors_;
+	std::vector<std::shared_ptr<Actor>> additionalActors_;
 
 
 	void DrawGround();
@@ -51,5 +52,7 @@ public:
 	virtual void Draw()override;
 	//特定の場所に爆弾を置く
 	void SetBomb(const Position2& pos);
+	void SetBlastH(const Position2& pos, int power);
+	void SetBlastV(const Position2& pos, int power);
 };
 

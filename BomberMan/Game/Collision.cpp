@@ -14,6 +14,7 @@ Collision::Collision(Actor& owner):owner_(owner)
 void Collision::SetRect(const Rect& rc)
 {
 	rect_ = rc;
+	isMoved_ = true;
 }
 
 void Collision::SetType(CollisionType type)

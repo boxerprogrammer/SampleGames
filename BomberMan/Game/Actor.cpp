@@ -14,3 +14,8 @@ const Collision& Actor::GetCollision() const
 {
 	return collision_;
 }
+
+bool Actor::IsDead() const
+{
+	return isDead_;
+}
