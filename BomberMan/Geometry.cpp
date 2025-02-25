@@ -117,3 +117,27 @@ void Rect::Draw(unsigned int col)const
 				Right(), 
 				Bottom(), col, false, 2.0f);
 }
+
+Size GetOverlappedSize(const Rect& rcA, const Rect& rcB)
+{
+	auto diff = rcB.center - rcA.center;
+	return {
+	static_cast<int>((rcA.size.w + rcB.size.w) / 2 - fabsf(diff.x)),
+	static_cast<int>((rcA.size.h + rcB.size.h) / 2 - fabsf(diff.y))
+	};
+}
+
+Vector2 GetAdjustVector(const Rect& rcA, const Rect& rcB)
+{
+	auto diff = rcB.center - rcA.center;
+	float xsign = (diff.x) / fabsf(diff.x);
+	float ysign = (diff.y) / fabsf(diff.y);
+	Size overlap = GetOverlappedSize(rcA, rcB);
+	if (overlap.w < overlap.h) {
+		return  { -overlap.w * xsign ,0.0f};
+	}
+	else {
+		return { 0.0f , -overlap.h * ysign };
+	}
+}
+

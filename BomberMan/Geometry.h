@@ -105,3 +105,6 @@ struct Rect {
 	void Draw(unsigned int col = 0xffffff)const;
 };
 
+Size GetOverlappedSize(const Rect& rcA, const Rect& rcB);
+Vector2 GetAdjustVector(const Rect& rcA, const Rect& rcB);
+

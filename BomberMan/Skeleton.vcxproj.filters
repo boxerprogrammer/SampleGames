@@ -27,12 +27,6 @@
     <ClCompile Include="Application.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\Scene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\SceneController.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -69,21 +63,24 @@
     <ClCompile Include="Game\Player.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Collision.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Enemy.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\SceneController.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Game\Bomb.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Collision.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\Scene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
@@ -128,14 +125,17 @@
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Collision.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Enemy.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Collision.h">
+      <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Bomb.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

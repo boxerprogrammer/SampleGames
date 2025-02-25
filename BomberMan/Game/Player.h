@@ -44,6 +44,8 @@ private:
 	/// </summary>
 	bool Move(Input& input);
 	void OnHitBlock(const Collision& coll);
+
+	void SetBomb(Input& input);
 public:
 	Player(GameScene& gameScene);
 	~Player();

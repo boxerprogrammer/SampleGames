@@ -8,7 +8,7 @@ constexpr int cut_width = 512;
 constexpr int cut_height = 512;
 constexpr int anim_num = 5 * 5;
 constexpr int anim_interval = 7;
-constexpr float draw_scale = 2.0f;
+constexpr float draw_scale = 1.0f;
 
 
 Bomb::Bomb(GameScene& gameScene, const Position2& pos):Actor(gameScene)

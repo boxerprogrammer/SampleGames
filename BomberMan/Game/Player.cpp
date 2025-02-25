@@ -1,6 +1,7 @@
 #include<DxLib.h>
 #include "Player.h"
 #include"../Input.h"
+#include"../Scene/GameScene.h"
 #include<cmath>
 #include<cassert>
 #include<algorithm>
@@ -150,6 +151,7 @@ bool Player::Move(Input& input)
 		currentDir_ = Direction::right;
 		vec.x += 1.0f;
 	}
+	SetBomb(input);
 	bool isMoved = (vec.Length() > 0.0f);
 	Position2 pos = pos_;
 	pos += vec.Normalized() * move_speed;
@@ -187,18 +189,14 @@ void Player::OnHitBlock(const Collision& coll)
 	Position2 pos = pos_;
 	auto& selfRc = collision_.GetRect();
 	auto& targetRc = coll.GetRect();
-	auto diff = targetRc.center - selfRc.center;
-	float xsign = (diff.x) / fabsf(diff.x);
-	float ysign = (diff.y) / fabsf(diff.y);
-	Size overlap = {
-		(selfRc.size.w + targetRc.size.w) / 2 - fabsf(diff.x),
-		(selfRc.size.h + targetRc.size.h) / 2 - fabsf(diff.y)
-	};
-	if (overlap.w < overlap.h) {
-		pos.x = pos.x - overlap.w * xsign;
-	}
-	else {
-		pos.y = pos.y - overlap.h * ysign;
-	}
+	pos+=GetAdjustVector(selfRc, targetRc);
 	SetPosition(pos);
+}
+
+void Player::SetBomb(Input& input)
+{
+	if (input.IsTrigger("action")) {
+		gameScene_.SetBomb(pos_);
+	}
+	
 }

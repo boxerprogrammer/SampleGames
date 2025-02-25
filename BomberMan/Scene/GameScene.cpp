@@ -9,6 +9,7 @@
 #include"../Game/Player.h"
 #include"../Game/UnbreakableBlock.h"
 #include"../Game/Enemy.h"
+#include"../Game/Bomb.h"
 #include<cmath>
 
 
@@ -167,5 +168,5 @@ void GameScene::Draw()
 
 void GameScene::SetBomb(const Position2& pos)
 {
-
+	actors_.push_back(std::make_shared<Bomb>(*this, pos));
 }

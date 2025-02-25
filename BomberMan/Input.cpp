@@ -42,7 +42,8 @@ void Input::SetDafault()
     inputTable_["right"] = { {PeripheralType::keybd, KEY_INPUT_RIGHT},
                             {PeripheralType::pad1, PAD_INPUT_RIGHT} 
     };
-    tempInputTable_ = inputTable_;//一時テーブルにコピー
+    tempInputTable_ = inputTable_;//一時テーブルにコピー
+
 }
 
 void Input::CommitEdittedInputTable()

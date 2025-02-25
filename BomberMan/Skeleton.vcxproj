@@ -24,6 +24,7 @@
     <ProjectGuid>{b765f179-7c1f-4fe3-8e61-a75dbc1ca86c}</ProjectGuid>
     <RootNamespace>Skeleton</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BomberMan</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

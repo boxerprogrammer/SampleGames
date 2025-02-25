@@ -33,7 +33,7 @@ void Enemy::IdleUpdate(Input&)
 void Enemy::IdleDraw()
 {
 	auto idx = (animFrame_ / anim_interval) % idle_num;
-	DrawRectRotaGraph2(pos_.x, pos_.y,
+	DrawRectRotaGraph2F(pos_.x, pos_.y,
 		idx*cut_size_w,0,
 		cut_size_w,cut_size_h,
 		32, 42,
