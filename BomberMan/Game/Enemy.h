@@ -3,6 +3,8 @@
 class Enemy :  public Actor
 {
 	int idleH_ = 0;//待機状態の画像ハンドル
+	int walkH_ = 0;//歩き状態の画像ハンドル
+	int deathH_ = 0;//死亡状態の画像ハンドル
 	int animFrame_ = 0;//アニメーション用フレーム番号
 
 	//「状態」遷移のための変数
@@ -16,6 +18,10 @@ class Enemy :  public Actor
 	//歩き状態
 	void WalkUpdate(Input&);
 	void WalkDraw();
+
+	//死に状態
+	void DeadUpdate(Input&);
+	void DeadDraw();
 
 	//状態に合わせたメンバ関数ポインタ
 	UpdateFunc_t update_;

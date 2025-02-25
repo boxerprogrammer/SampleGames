@@ -2,7 +2,7 @@
 #include"../Scene/GameScene.h"
 #include<DxLib.h>
 #include<cassert>
-
+#include"Collision.h"
 constexpr int anim_interval = 7;
 constexpr int idle_num = 4;
 constexpr float draw_scale = 2.0f;
@@ -13,7 +13,9 @@ constexpr int coll_size = 20;
 Enemy::Enemy(GameScene& gameScene):Actor(gameScene),animFrame_(0)
 {
 	idleH_=LoadGraph(L"img/enemy/slime_idle.png");
+	deathH_ = LoadGraph(L"img/enemy/slime_death.png");
 	assert(idleH_ >= 0);
+	assert(deathH_ >= 0);
 	update_ = &Enemy::IdleUpdate;
 	draw_ = &Enemy::IdleDraw;
 	collision_.SetRect({ { pos_.x, pos_.y },
@@ -50,6 +52,14 @@ void Enemy::WalkDraw()
 {
 }
 
+void Enemy::DeadUpdate(Input&)
+{
+}
+
+void Enemy::DeadDraw()
+{
+}
+
 bool Enemy::Move(Input& input)
 {
 	return false;
@@ -70,6 +80,8 @@ void Enemy::Draw()
 
 void Enemy::OnHit(const Collision& coll)
 {
+	if(coll.GetType()==CollisionType::Blast){
+	}
 }
 
 void Enemy::SetPosition(const Position2& pos)
