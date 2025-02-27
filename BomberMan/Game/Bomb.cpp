@@ -18,10 +18,7 @@ constexpr int wait_pict_num = 8;
 void Bomb::WaitUpdate()
 {
 	if (++animFrame_ >= anim_interval * wait_pict_num) {
-		update_ = &Bomb::BurstUpdate;
-		gameScene_.SetBlastH(pos_, power_);
-		gameScene_.SetBlastV(pos_, power_); 
-		animFrame_ = 0;
+		Burst();
 	}
 }
 
@@ -30,6 +27,15 @@ void Bomb::BurstUpdate()
 	if (++animFrame_ >= anim_interval*anim_num) {
 		isDead_ = true;
 	}
+}
+
+void Bomb::Burst()
+{
+	update_ = &Bomb::BurstUpdate;
+	collision_.Disable();
+	gameScene_.SetBlastH(pos_, power_);
+	gameScene_.SetBlastV(pos_, power_); 
+	animFrame_ = 0;
 }
 
 Bomb::Bomb(GameScene& gameScene, const Position2& pos):Actor(gameScene)
@@ -69,4 +75,7 @@ void Bomb::Draw()
 
 void Bomb::OnHit(const Collision& collision)
 {
+	if (collision.GetType() == CollisionType::Blast) {
+		Burst();
+	}
 }

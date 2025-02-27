@@ -12,7 +12,7 @@ class Bomb :
 
 	void WaitUpdate();
 	void BurstUpdate();
-
+	void Burst();
 public:
 	Bomb(GameScene& gameScene, const Position2& pos);
 	/// <summary>

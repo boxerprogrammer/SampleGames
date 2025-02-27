@@ -54,10 +54,23 @@ void Enemy::WalkDraw()
 
 void Enemy::DeadUpdate(Input&)
 {
+	++animFrame_;
+	if (animFrame_ / anim_interval >= 16) {
+		isDead_ = true;
+	}
 }
 
 void Enemy::DeadDraw()
 {
+	auto idxX = (animFrame_ / anim_interval) % 4;
+	auto idxY = (animFrame_ / anim_interval) / 4;
+	DrawRectRotaGraph2F(pos_.x, pos_.y,
+		idxX * cut_size_w, idxY * cut_size_w,
+		cut_size_w, cut_size_h,
+		32, 42,
+		draw_scale, 0.0f,
+		deathH_,
+		true);
 }
 
 bool Enemy::Move(Input& input)
@@ -81,6 +94,10 @@ void Enemy::Draw()
 void Enemy::OnHit(const Collision& coll)
 {
 	if(coll.GetType()==CollisionType::Blast){
+		update_ = &Enemy::DeadUpdate;
+		draw_ = &Enemy::DeadDraw;
+		animFrame_ = 0;
+		collision_.SetType(CollisionType::None);
 	}
 }
 

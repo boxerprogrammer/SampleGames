@@ -6,6 +6,7 @@ class Actor;
 /// 衝突タイプ
 /// </summary>
 enum class CollisionType {
+	None,//無し
 	Player,//プレイヤー
 	Block,//ブロック
 	Enemy,//敵
